@@ -48,10 +48,16 @@ public class SeleniumTests {
         driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.xpath("//*[text()=' Login']")).click();
-        // 2 nd solution
-        //loginPage.login("tomsmith","SuperSecretPassword!");
         String pageText = driver.findElement(By.xpath("//*[text()=' Secure Area']")).getText();
         Assert.assertEquals(pageText,"Secure Area");
+
+        /*
+        2 nd solution (Page Object Model):
+
+        loginPage.login("tomsmith","SuperSecretPassword!");
+        String pageText = driver.findElement(By.xpath("//*[text()=' Secure Area']")).getText();
+        Assert.assertEquals(pageText,"Secure Area");
+        */
     }
 
     @Test(description = "2. Login Failure-1")
@@ -60,9 +66,17 @@ public class SeleniumTests {
         driver.findElement(By.id("username")).sendKeys("goksalc");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.xpath("//*[text()=' Login']")).click();
-        //loginPage.login("goksalc","SuperSecretPassword!");
         String errorText = driver.findElement(By.id("flash")).getText();
         Assert.assertEquals(errorText,"Your username is invalid!\n×");
+
+        /*
+        2 nd solution (Page Object Model):
+
+        loginPage.login("goksalc","SuperSecretPassword!");
+        String errorText = driver.findElement(By.id("flash")).getText();
+        Assert.assertEquals(errorText,"Your username is invalid!\n×");
+
+        */
     }
 
     @Test(description = "2. Login Failure-2")
@@ -71,9 +85,16 @@ public class SeleniumTests {
         driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("goksalfailuretest!");
         driver.findElement(By.xpath("//*[text()=' Login']")).click();
-        //loginPage.login("tomsmith","goksalfailuretest!");
         String errorText = driver.findElement(By.id("flash")).getText();
         Assert.assertEquals(errorText,"Your password is invalid!\n×");
+
+        /*
+        2 nd solution (Page Object Model):
+
+        loginPage.login("tomsmith","goksalfailuretest!");
+        String errorText = driver.findElement(By.id("flash")).getText();
+        Assert.assertEquals(errorText,"Your password is invalid!\n×");
+         */
     }
 
     @Test(description = "3. Checkboxes")

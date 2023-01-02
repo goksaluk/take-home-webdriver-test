@@ -1,5 +1,6 @@
 package com.dotdash.pages;
 
+import com.dotdash.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +19,7 @@ public class LoginPage {
     public WebElement loginButton;
 
     public LoginPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(Driver.get(), this);
     }
 
 
